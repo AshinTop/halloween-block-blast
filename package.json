@@ -1,0 +1,10 @@
+{
+  "name": "halloween-block-blast",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node tests/engine.test.js",
+    "start": "python3 -m http.server 4173"
+  }
+}
