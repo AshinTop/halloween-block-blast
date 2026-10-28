@@ -17,5 +17,18 @@ export function newOrder(level){const r=RECIPES[level];if(!r)throw new Error('Un
 export function footprint(piece,row,col){return SHAPES[piece.shape].map(([r,c])=>[row+r,col+c]);}
 export function canPlace(board,piece,row,col){return!!piece&&footprint(piece,row,col).every(([r,c])=>r>=0&&r<8&&c>=0&&c<8&&!board[r*8+c]);}
 export function anyMove(state){return state.tray.some(p=>p&&state.board.some((_,i)=>canPlace(state.board,p,Math.floor(i/8),i%8)));}
+// Validate the complete saved payload before any renderer or placement rule sees it.
+export function validateClassicSave(saved){
+  if(!saved||typeof saved!=='object'||Array.isArray(saved)||![0,1].includes(saved.rewinds))return false;
+  const s=saved.state,integer=n=>Number.isSafeInteger(n)&&n>=0;
+  if(!s||typeof s!=='object'||Array.isArray(s)||s.mode!=='classic'||s.level!==0||s.done!==false||typeof s.over!=='boolean')return false;
+  if(!Array.isArray(s.board)||s.board.length!==64||!Array.from(s.board).every(n=>Number.isInteger(n)&&n>=0&&n<=5))return false;
+  if(!Array.isArray(s.webs)||s.webs.length!==0||s.initialWebs!==0)return false;
+  if(!['moves','score','combo','totalLines','seed','nextIndex'].every(k=>integer(s[k]))||s.seed>4294967295||s.nextIndex<3||s.nextIndex%3!==0)return false;
+  if(s.nextIndex!==3*(Math.floor(s.moves/3)+1)||s.combo>s.moves||s.totalLines>s.moves*16)return false;
+  if(!Array.isArray(s.tray)||s.tray.length!==3||!Array.from(s.tray).every((p,i)=>p===null||(p&&typeof p==='object'&&!Array.isArray(p)&&p.id===s.nextIndex-3+i&&typeof p.shape==='string'&&Object.hasOwn(SHAPES,p.shape)&&Number.isInteger(p.color)&&p.color>=1&&p.color<=5)))return false;
+  if(s.tray.filter(p=>p!==null).length!==3-s.moves%3)return false;
+  return s.over===!anyMove(s);
+}
 export function completedLines(board){const rows=[],cols=[];for(let i=0;i<8;i++){if(Array.from({length:8},(_,c)=>board[i*8+c]).every(Boolean))rows.push(i);if(Array.from({length:8},(_,r)=>board[r*8+i]).every(Boolean))cols.push(i);}const cells=new Set();rows.forEach(r=>{for(let c=0;c<8;c++)cells.add(r*8+c)});cols.forEach(c=>{for(let r=0;r<8;r++)cells.add(r*8+c)});return{rows,cols,cells:[...cells]};}
 export function place(state,slot,row,col){const piece=state.tray[slot];if(state.done||state.over||!piece||!canPlace(state.board,piece,row,col))return null;const board=[...state.board],placed=footprint(piece,row,col).map(([r,c])=>r*8+c);placed.forEach(i=>board[i]=piece.color);const clear=completedLines(board),lineCount=clear.rows.length+clear.cols.length,cleared=new Set(clear.cells),webs=state.webs.filter(i=>!cleared.has(i)),caught=state.webs.length-webs.length;clear.cells.forEach(i=>board[i]=0);const tray=[...state.tray];tray[slot]=null;const combo=lineCount?state.combo+1:0;let next={...state,board,webs,tray,moves:state.moves+1,totalLines:state.totalLines+lineCount,combo,score:state.score+placed.length+clear.cells.length*10+Math.max(0,lineCount-1)*20+Math.max(0,combo-1)*5};next.done=next.mode==='orders'&&webs.length===0;if(!next.done&&tray.every(p=>p===null))next=refill(next);next.over=!next.done&&((next.mode==='orders'&&next.moves>=RECIPES[next.level].limit)||!anyMove(next));return{state:next,cleared:clear.cells,lines:lineCount,caught,placed};}
