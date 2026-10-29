@@ -1,142 +1,113 @@
-# Witch’s Candy Blocks — Halloween Block Puzzle Game
+[English](README.md) · [简体中文](README.zh-CN.md) · [Español](README.es.md) · [Português (Brasil)](README.pt-BR.md) · [日本語](README.ja.md)
 
-**Make a little room. Brew a little magic.** Witch’s Candy Blocks is a free Halloween block puzzle from Midnight Candy Club, created for [BlockBlasty](https://blockblasty.top/). Fit candy-shaped pieces into an 8×8 board, complete rows and columns, and send every clear into the witch’s cauldron.
+# Witch’s Candy Blocks — Halloween Block Puzzle with Potion Orders
 
-**[Play online](https://halloween-block-blast.crazy3d.org/)** · [Embedding guide](EMBEDDING.md)
+🍬 A witch has a tray of oddly shaped sweets and a cauldron waiting for your best idea. **Witch’s Candy Blocks** is an 8×8 Halloween block puzzle about making space. Fit shapes, complete rows and columns, and turn each clear into a little bottle of midnight magic.
 
-**Live deployment:** Play on Cloudflare using the link above. The site is deployed from this GitHub repository. Hosting scripts and request logging may be added by Cloudflare independently of the game code.
+**[Play online](https://halloween-block-blast.crazy3d.org/)** · [Explore all 12 Halloween games](https://github.com/AshinTop/halloween-games) · [⭐ Star this repository](https://github.com/AshinTop/halloween-block-blast)
 
-[Video player and transcript](https://halloween-block-blast.crazy3d.org/intro.html) · [Captioned MP4 file](docs/media/intro.mp4). The 24-second silent introduction uses actual game screenshots; it is not a live gameplay recording.
+README translations cover five languages. The **game interface currently supports English and Simplified Chinese only**.
 
-![Witch’s Candy Blocks: an 8×8 Halloween block puzzle with a three-piece tray and an illustrated witch’s cauldron](docs/images/gameplay.jpg)
+![Witch’s Candy Blocks showing an eight-by-eight candy board, three-piece tray, cobweb targets, and cauldron](docs/images/gameplay.jpg)
 
-Like this little candy workshop? **[Star the repository](https://github.com/AshinTop/halloween-block-blast)** to save it for another round and follow future updates.
+## What makes it special
 
-## Familiar blocks, a Halloween twist
-
-Each batch contains three pieces. Place them anywhere they fit, without overlap, and fill an entire row or column to clear it. You receive a new batch only after using all three pieces. A careful placement can complete both a row and a column; their shared cell clears only once.
-
-The Halloween theme extends into two play modes. **Classic** is an open-ended score challenge: every twelve cleared lines fills another bottle of midnight magic. **Potion Orders** offers five fixed, bite-size puzzles where the goal is to remove the original sweets marked by cobwebs within a placement budget.
-
-Every run also has one **Moon Rewind**. It restores the previous placement, including the board, tray, score, goals, and random sequence, so the second attempt is a real alternative to the same position.
-
-## Features
-
-- Complete 8×8 block placement, occupied-cell and boundary checks, simultaneous row/column clears, and legal-move game-over detection.
-- A three-piece tray with all-used refill timing and no forced piece rotation.
-- Placement and line-clear previews, real drag-and-drop, and a select-then-tap alternative.
-- Endless Classic scoring plus five authored Potion Orders with tested completion paths.
-- One exact Moon Rewind per run, a restart action, clear result screens, and real result sharing.
-- Original candy, cobweb, bottle, and cauldron vector art; optional synthesized sound.
-- English and Simplified Chinese, keyboard controls, responsive iframe layouts, and reduced-motion support.
-- Local best score, Classic progress, completed orders, language, and sound preference.
-- Plain static HTML/CSS/JavaScript modules. No account, framework, backend, CDN, or dependency installation is needed to play.
+- An **8×8 placement board** and a three-piece tray. Full rows and columns clear together; shared crossing cells count once.
+- **Classic** for an ongoing score challenge, plus **five fixed Potion Orders** with tested completion paths.
+- Drag-and-drop, select-then-tap placement, keyboard play, and previews of valid placement and potential line clears.
+- One **Moon Rewind** per run restores the complete previous placement, including score, tray, targets, and random sequence.
+- Original candy, cobweb, bottle, and cauldron artwork; optional synthesized sound, reduced-motion support, and local progress.
 
 ## How to play
 
-1. Look at all three shapes before placing the first one.
-2. Drag a shape onto the board, or select it and tap the cell where its top-left corner should land.
-3. Fill all eight cells of a row or column to clear it. **Colors do not need to match.**
-4. Use every shape in the tray to receive the next batch.
-5. Leave space for larger shapes. A Classic run ends only when none of the remaining tray pieces has a legal placement.
-6. In Potion Orders, clear every initially webbed sweet before using the placement budget. Newly placed candy does not become another required target.
+Choose a shape from the tray and place it entirely inside the board without overlapping occupied cells. Fill all eight cells of a row or column to clear it. **Colors do not need to match, and shapes do not rotate.** There is no falling-block timer. You receive the next batch only after placing all three current pieces.
 
-There is no falling-block timer. Shapes do not rotate. Moon Rewind can undo one placement in a run, including a position that just ran out of space, provided the order has not already been completed.
+In **Classic**, keep making room and improving your score. Every 12 cleared lines fills another bottle. A run ends when none of the remaining tray pieces has a legal placement, not merely when one inconvenient shape cannot fit.
+
+In **Potion Orders**, clear every sweet that was marked with a cobweb at the beginning, within the placement allowance. Newly placed candy does not become another target. The five puzzles introduce single rows, paired rows, crossing clears, planning around all three pieces, and double-row finishes. Their boards and piece sequences are fixed.
+
+Moon Rewind is available once per run. It can recover the last placement after running out of space, but cannot undo an already completed order. Restarting begins a fresh attempt; rewind is not unlimited Undo.
 
 ## Controls
 
-| Action | Touch / mouse | Keyboard |
-|---|---|---|
-| Select a tray piece | Tap it | 1 / 2 / 3 |
-| Place a piece | Drag to the board, or tap its top-left landing cell | Arrows position the cursor; Enter places |
-| Undo the previous placement once | **Moon Rewind** | Z |
-| Restart or change mode | In-game buttons / compact menu | Tab to a control |
-| Help, sound, language | Toolbar buttons | Tab to a control |
+| Action | Input |
+| --- | --- |
+| Select a piece | Tap/click the tray, or press **1 / 2 / 3** |
+| Place | Drag, or tap the cell for the shape’s top-left corner |
+| Keyboard placement | Arrow keys move the cursor; **Enter** places |
+| Moon Rewind | **Z** or the rewind button |
+| Mode, order, restart, help | Use the game buttons or compact menu; keyboard input needs iframe focus |
 
-Keyboard input requires focus inside the game iframe. Tap-to-place remains available when dragging is inconvenient on a small screen.
+## A little strategy
 
-## Two ways to visit the workshop
+Look at all three pieces before spending the largest open area. A tempting small clear can leave no home for the next shape. In an order, concentrate on the original webbed cells rather than clearing every colorful square. Check the preview before releasing a drag, and save Moon Rewind for a placement whose consequences you did not anticipate.
 
-| Mode | Goal | Replay behavior |
-|---|---|---|
-| Classic | Keep placing pieces and improve your score; every 12 lines brews a bottle | Browser storage restores an unfinished Classic run when available |
-| Potion Orders | Clear the original webbed sweets within the placement limit | Five fixed boards and piece sequences; share or retry a specific order |
+## Progress and challenge links
 
-The five orders teach a single-row clear, paired rows, a crossing clear, planning for all three pieces, and double-row finishes. They are short spatial puzzles, not a large randomly generated campaign. All five have complete tested solution witnesses in [engine.js](engine.js).
+When storage is available, the browser retains unfinished Classic progress, the best score, completed orders, language, and sound preference. Records do not synchronize across devices. A link such as [Potion Order 3](https://halloween-block-blast.crazy3d.org/#order=3) opens that fixed challenge; values 1–5 select the others. Sharing copies actual score or order-result text and a link, not a replay or an uploaded board. If copying is blocked, the text remains available manually.
 
-A link such as [`#order=3`](https://halloween-block-blast.crazy3d.org/#order=3) opens the third order. Result sharing copies the real score or order outcome and a link. It does not create a cloud replay or transmit a saved board.
+## Screenshots and video
 
-## Compact-player walkthrough
+![Compact Witch’s Candy Blocks layout with the board, tray, order progress, and Moon Rewind controls](docs/images/mobile.jpg)
 
-![Witch’s Candy Blocks in a compact host iframe, showing the block board, three-piece tray and main tools](docs/images/mobile.jpg)
+Actual game screenshot from a compact browser iframe; this demonstrates the small-window layout, not a physical-phone test.
 
-Choose one of the three pieces, then tap its top-left landing cell. The placement preview helps you check a shape before committing it. Full rows and columns clear regardless of candy color.
+[Video player and transcript](https://halloween-block-blast.crazy3d.org/intro.html) · [Download the MP4](docs/media/intro.mp4)
 
-*Actual interface captured in a browser iframe sized for the host player. This is a compact-window illustration, not a physical-phone test.*
+The **24-second silent introduction** combines actual screenshots and captions. It is a visual tour, not continuous gameplay footage or an audio demonstration.
 
-## Embed the Halloween block puzzle
-
-```html
-<iframe
-  src="https://halloween-block-blast.crazy3d.org/?embed=1"
-  title="Witch’s Candy Blocks — Halloween block puzzle"
-  style="display:block;width:100%;height:654px;border:0"
-  allow="fullscreen"
-  allowfullscreen
-></iframe>
-```
-
-The game detects an iframe automatically. `?embed=1` also enables the compact layout in a direct visit; `?embed=0` shows the full-page presentation. The desktop host provides a **654 px**-high game area. The compact layout also supports portrait phone and short landscape windows, placing the tray beside or below the board as space allows.
-
-Browser acceptance exercised **1160×654**, **390×650**, and **844×340**-class windows, including an order completion and Moon Rewind. This is browser-based CSS-size testing, not a claim of testing physical iOS or Android hardware. Help and result dialogs can scroll internally. See [EMBEDDING.md](EMBEDDING.md) for exact sizing, storage, clipboard, and fullscreen behavior.
-
-## Run locally and verify the rules
-
-```bash
-python3 -m http.server 4173
-```
-
-Open `http://localhost:4173`. Serve the files over HTTP(S); ES modules need a server rather than a plain `file://` opening.
-
-```bash
-npm test
-```
-
-The built-in Node tests cover illegal placements, simultaneous crossing clears, tray refill timing, game-over rules, deterministic random generation, all five order solutions, terminal-state protection, and validation of saved Classic data. There is no dependency installation or build step.
-
-## FAQ
+## Frequently asked questions
 
 ### Is this a match-three game?
 
-No ingredient colors need to match. You clear full eight-cell rows and columns by fitting shapes into the board. If you prefer swapping neighboring ingredients, try [Witch’s Potion Match](https://halloween-potion-match.crazy3d.org/).
+The goal is to fill whole rows and columns by fitting shapes. Candy color is decorative; you do not swap adjacent candies. For swapping ingredients, try Witch’s Potion Match below.
 
-### Why won’t the tray refill yet?
+### Why is there no new tray yet?
 
-Every batch contains three pieces. All three must be placed before the next batch appears. Planning around the least convenient shape can be more useful than placing the easiest one first.
+You must use all three pieces from the current batch. Plan for the awkward shape as well as the easy ones.
 
-### What does Moon Rewind restore?
+### Exactly what does Moon Rewind restore?
 
-It restores the entire previous placement state, including scoring, cleared lines, tray pieces, webbed targets, and the random stream. There is one rewind per run; it is not unlimited undo.
+The previous board, tray, score, clear counts, webbed targets, and random state. You get one rewind per run, so it cannot be used repeatedly to search every possibility.
 
-### Does it save my game or collect information?
+## Run locally and embed
 
-Classic progress and local records are stored in the browser when permitted. The game code has no login, analytics, advertising SDK, remote API, or external asset requests. Sharing copies text and a link. If storage or clipboard access is blocked, gameplay continues and sharing falls back to manually copyable text. Your hosting provider may have its own standard request logs.
+Serve the repository root over HTTP:
 
-### Can I move progress to another device?
+```sh
+python3 -m http.server 4173
+```
 
-There is no account or synchronization service. Progress belongs to the browser and origin; embedded and direct visits may use different storage partitions. Clearing site data removes local records.
+Open **http://localhost:4173/**. No build or dependencies are needed. Use HTTP: `file://` can block JavaScript modules.
 
-## More Halloween games
+Run the included Node checks:
 
-| Game | Try a different kind of puzzle |
-|---|---|
-| [Witch’s Potion Match](https://halloween-potion-match.crazy3d.org/) · [Source](https://github.com/AshinTop/halloween-potion-match) | Swap ingredients, trigger cascades, and light recipe candles. |
-| [Pumpkin 2048](https://halloween-2048.crazy3d.org/) · [Source](https://github.com/AshinTop/halloween-2048) | Merge numbered pumpkins and solve limited-move lantern trials. |
-| [Trick-or-Treat TriPeaks](https://halloween-tripeaks.crazy3d.org/) · [Source](https://github.com/AshinTop/halloween-tripeaks) | Clear a layered Halloween card tableau by rank. |
-| [Haunted Hearts](https://halloween-love-game.crazy3d.org/) · [Source](https://github.com/AshinTop/halloween-love-game) | Help two ghosts share doors, pathways, and a lantern. |
+```sh
+npm test
+```
 
-**简体中文：**《女巫糖果工坊》包含经典 8×8 方块清行、五份固定魔药订单和每局一次月光回溯。可拖动或先选后放，支持键盘和中英文切换；颜色无需匹配，进度只保存在本地浏览器。
+Built-in Node tests cover rejected placements, simultaneous crossing clears, tray refill timing, terminal states, deterministic generation, all five order solutions, and saved Classic data. No dependency installation or build is needed.
 
-## Creation credits
+```html
+<iframe src="https://halloween-block-blast.crazy3d.org/?embed=1"
+  title="Witch’s Candy Blocks"
+  style="display:block;width:100%;height:654px;border:0"
+  allow="fullscreen" allowfullscreen></iframe>
+```
 
-Designed, implemented, and reviewed through human-directed AI collaboration. The gameplay implementation, interface, and original SVG artwork were created for this project; optional sound is synthesized in the browser. Screenshots show the actual interface, and the short video is a captioned visual introduction assembled from those captures.
+The desktop player uses a **654 px** game area. Browser review covered 1160×654, 390×650, and 844×340-class windows, including order completion and rewind. The tray moves beside or below the board; help and result dialogs can scroll internally.
+
+See [EMBEDDING.md](EMBEDDING.md) for sizing, storage, input focus, and permissions. Measure available iframe height after the host toolbar.
+
+## More little Halloween adventures
+
+- **[Witch’s Potion Match](https://halloween-potion-match.crazy3d.org/)** · [Source](https://github.com/AshinTop/halloween-potion-match) — Swap ingredients, trigger cascades, and light recipe candles.
+- **[Pumpkin 2048](https://halloween-2048.crazy3d.org/)** · [Source](https://github.com/AshinTop/halloween-2048) — Merge numbered pumpkins and solve positional Lantern Trials.
+- **[Trick-or-Treat TriPeaks](https://halloween-tripeaks.crazy3d.org/)** · [Source](https://github.com/AshinTop/halloween-tripeaks) — Build adjacent-rank card chains across eight rescue deals.
+- **[Haunted Hearts](https://halloween-love-game.crazy3d.org/)** · [Source](https://github.com/AshinTop/halloween-love-game) — Help two ghosts share doors, paths, and a lantern.
+
+## Credits and support
+
+Created for **AshinTop** and **Midnight Candy Club** with human-directed, AI-assisted design, programming, and review. Artwork and synthesized sounds are original to this project. The game needs no remote account; hosting may independently add scripts or request logs.
+
+Enjoyed playing? **[Leave a GitHub Star](https://github.com/AshinTop/halloween-block-blast)**. For bug reports, include browser, iframe size, challenge link, and reproduction steps.
