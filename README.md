@@ -2,11 +2,11 @@
 
 **Make a little room. Brew a little magic.** Witch’s Candy Blocks is a free Halloween block puzzle from Midnight Candy Club, created for [BlockBlasty](https://blockblasty.top/). Fit candy-shaped pieces into an 8×8 board, complete rows and columns, and send every clear into the witch’s cauldron.
 
-**[GitHub Pages deployment target](https://ashintop.github.io/halloween-block-blast/)** · [Embedding guide](EMBEDDING.md)
+**[Play online](https://halloween-block-blast.crazy3d.org/)** · [Embedding guide](EMBEDDING.md)
 
-**Deployment status:** GitHub Pages is not live yet. The `ashintop.github.io` links in this document are intended deployment addresses. Use the local-run instructions until the hosted game has been published and verified.
+**Live deployment:** Play on Cloudflare using the link above. The site is deployed from this GitHub repository. Hosting scripts and request logging may be added by Cloudflare independently of the game code.
 
-[Video player and transcript (deployment target)](https://ashintop.github.io/halloween-block-blast/intro.html) · [Captioned MP4 file](docs/media/intro.mp4). The 24-second silent introduction uses actual game screenshots; it is not a live gameplay recording.
+[Video player and transcript](https://halloween-block-blast.crazy3d.org/intro.html) · [Captioned MP4 file](docs/media/intro.mp4). The 24-second silent introduction uses actual game screenshots; it is not a live gameplay recording.
 
 ![Witch’s Candy Blocks: an 8×8 Halloween block puzzle with a three-piece tray and an illustrated witch’s cauldron](docs/images/gameplay.jpg)
 
@@ -64,7 +64,7 @@ Keyboard input requires focus inside the game iframe. Tap-to-place remains avail
 
 The five orders teach a single-row clear, paired rows, a crossing clear, planning for all three pieces, and double-row finishes. They are short spatial puzzles, not a large randomly generated campaign. All five have complete tested solution witnesses in [engine.js](engine.js).
 
-A link such as [`#order=3`](https://ashintop.github.io/halloween-block-blast/#order=3) opens the third order. Result sharing copies the real score or order outcome and a link. It does not create a cloud replay or transmit a saved board.
+A link such as [`#order=3`](https://halloween-block-blast.crazy3d.org/#order=3) opens the third order. Result sharing copies the real score or order outcome and a link. It does not create a cloud replay or transmit a saved board.
 
 ## Compact-player walkthrough
 
@@ -78,7 +78,7 @@ Choose one of the three pieces, then tap its top-left landing cell. The placemen
 
 ```html
 <iframe
-  src="https://ashintop.github.io/halloween-block-blast/?embed=1"
+  src="https://halloween-block-blast.crazy3d.org/?embed=1"
   title="Witch’s Candy Blocks — Halloween block puzzle"
   style="display:block;width:100%;height:654px;border:0"
   allow="fullscreen"
@@ -108,7 +108,7 @@ The built-in Node tests cover illegal placements, simultaneous crossing clears, 
 
 ### Is this a match-three game?
 
-No ingredient colors need to match. You clear full eight-cell rows and columns by fitting shapes into the board. If you prefer swapping neighboring ingredients, try [Witch’s Potion Match](https://github.com/AshinTop/halloween-potion-match).
+No ingredient colors need to match. You clear full eight-cell rows and columns by fitting shapes into the board. If you prefer swapping neighboring ingredients, try [Witch’s Potion Match](https://halloween-potion-match.crazy3d.org/).
 
 ### Why won’t the tray refill yet?
 
@@ -130,10 +130,10 @@ There is no account or synchronization service. Progress belongs to the browser 
 
 | Game | Try a different kind of puzzle |
 |---|---|
-| [Witch’s Potion Match](https://github.com/AshinTop/halloween-potion-match) | Swap ingredients, trigger cascades, and light recipe candles. |
-| [Pumpkin 2048](https://github.com/AshinTop/halloween-2048) | Merge numbered pumpkins and solve limited-move lantern trials. |
-| [Trick-or-Treat TriPeaks](https://github.com/AshinTop/halloween-tripeaks) | Clear a layered Halloween card tableau by rank. |
-| [Haunted Hearts](https://github.com/AshinTop/halloween-love-game) | Help two ghosts share doors, pathways, and a lantern. |
+| [Witch’s Potion Match](https://halloween-potion-match.crazy3d.org/) · [Source](https://github.com/AshinTop/halloween-potion-match) | Swap ingredients, trigger cascades, and light recipe candles. |
+| [Pumpkin 2048](https://halloween-2048.crazy3d.org/) · [Source](https://github.com/AshinTop/halloween-2048) | Merge numbered pumpkins and solve limited-move lantern trials. |
+| [Trick-or-Treat TriPeaks](https://halloween-tripeaks.crazy3d.org/) · [Source](https://github.com/AshinTop/halloween-tripeaks) | Clear a layered Halloween card tableau by rank. |
+| [Haunted Hearts](https://halloween-love-game.crazy3d.org/) · [Source](https://github.com/AshinTop/halloween-love-game) | Help two ghosts share doors, pathways, and a lantern. |
 
 **简体中文：**《女巫糖果工坊》包含经典 8×8 方块清行、五份固定魔药订单和每局一次月光回溯。可拖动或先选后放，支持键盘和中英文切换；颜色无需匹配，进度只保存在本地浏览器。
 

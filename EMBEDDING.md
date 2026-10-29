@@ -6,7 +6,7 @@ This is a self-contained static game. Serve the repository over HTTPS with `inde
 
 ```html
 <iframe
-  src="https://YOUR-GAME-HOST/index.html?embed=1"
+  src="https://halloween-block-blast.crazy3d.org/?embed=1"
   title="Witch’s Candy Blocks"
   width="100%"
   height="654"
@@ -18,7 +18,7 @@ This is a self-contained static game. Serve the repository over HTTPS with `inde
 ></iframe>
 ```
 
-Replace `YOUR-GAME-HOST` with the deployed game origin. The game automatically enters its compact layout inside an iframe. `?embed=1` also enables this layout when opened directly, which is useful for checking a host-sized preview. `?embed=0` forces the full-page presentation for debugging. `#order=1` through `#order=5` open a specific potion order; for example, `index.html?embed=1#order=3`.
+The example uses the live Cloudflare game URL. The game automatically enters its compact layout inside an iframe. `?embed=1` also enables this layout when opened directly, which is useful for checking a host-sized preview. `?embed=0` forces the full-page presentation for debugging. `#order=1` through `#order=5` open a specific potion order; for example, `index.html?embed=1#order=3`.
 
 The embed toolbar retains mode/order selection, goal progress, moon rewind, restart, help, sound, language, and fullscreen. Desktop and short landscape windows put the three ingredients beside the board; narrow portrait windows put them underneath. A `ResizeObserver` sizes the board from the remaining container space. All essential play controls stay in the iframe without scrolling its document. Help and result dialogs can scroll internally.
 
@@ -54,7 +54,7 @@ Only subtract the toolbar if it occupies the same viewport; do not subtract it a
 - Fullscreen requires the host’s `allowfullscreen` / `allow="fullscreen"` permission and browser support. The in-game button is disabled when unavailable; the host may provide its own fullscreen control.
 - Sharing copies real result text and an order URL. Clipboard access may be limited by browser policy or sandbox configuration; the game then displays the text and link for manual copying. No social service is contacted.
 - Local storage saves classic progress, best score, completed orders, language, and sound preference. If storage is blocked or partitioned, play continues; progress may not persist or may differ from a direct visit. `allow-same-origin` permits the normal origin storage behavior when supported.
-- The game makes no runtime API requests and has no login, analytics, parent-message protocol, external assets, or server API. The host does not need to expose credentials or send any `postMessage` initialization data.
+- The game code makes no runtime API requests and includes no login, analytics, parent-message protocol, external assets, or server API. The host does not need to expose credentials or send any `postMessage` initialization data.
 
 ## Acceptance checks
 
