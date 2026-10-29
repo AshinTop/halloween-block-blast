@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Witch's Candy Blocks</title>
+  <rect width="64" height="64" rx="15" fill="#192627"/>
+  <rect x="10" y="10" width="20" height="20" rx="5" fill="#e6c68f"/>
+  <rect x="10" y="34" width="20" height="20" rx="5" fill="#d8a1b6"/>
+  <rect x="34" y="34" width="20" height="20" rx="5" fill="#aed0b4"/>
+  <path d="m44 10 3.5 6.5L54 20l-6.5 3.5L44 30l-3.5-6.5L34 20l6.5-3.5Z" fill="#f4dfb9"/>
+  <path d="M15 14h10M15 38h10M39 38h10" stroke="#fff" stroke-opacity=".4" stroke-width="2" stroke-linecap="round"/>
+</svg>
